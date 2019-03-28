@@ -1,5 +1,6 @@
 body{
     background-color:#eee;
+    overflow-x:hidden;
 }
 .wrapper{
     margin:80px;
@@ -14,8 +15,21 @@ body{
     height: 20vh;
 
 }
-.hamburger{
-    
+.header{
+    width: 100%;
+    margin: 0;
+}
+.container-fluid{
+   padding: 0; 
+}
+.btn-success{
+    border-radius: 100px;
+    padding: 20px 25px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+.fas{
+    font-size: 3.5em;
 }
 .form-signin{
     max-width:380px;
