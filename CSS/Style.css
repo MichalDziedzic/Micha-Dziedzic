@@ -53,3 +53,14 @@ body{
 .form-signin .form-control{
     padding: 10px;
 }
+
+.card-header{
+    width: 100%;
+}
+.section-card{
+    margin-top: 50px;
+    border-radius: 10px;
+}
+.section-cards:nth-child(1){
+    margin-top: 50px;
+}
