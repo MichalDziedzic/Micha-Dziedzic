@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.style.setProperty('display','none');
   }
 
-  function AddTask(name,text) {
+  function AddTask(name,textfromarea) {
     console.log('dsgdsgsdf')
 
     const todo = document.createElement('div');
@@ -59,26 +59,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const todoBar = document.createElement('div');
     //todoBar.classList.add('col-6 row section-cards section-card text-white bg-info mb-3');
-    addClassToElem(todoBar, ['col-6', 'row', 'section-cards', 'section-card', 'text-white', 'bg-info', 'mb-3'])
+    addClassToElem(todoBar, ['col-6', 'row', 'section-cards','section-card', 'text-white', 'bg-info','mb-3'])
 
     const todoBarsecond = document.createElement('div');
+    //todoBarsecond.innerHTML=name + "</div>";
     //todoBarsecond.classList.add('card-header header-card');
     addClassToElem(todoBarsecond, ['card-header', 'header-card']);
-    todoBarsecond.innerText=name;
+    
+    
 
     const todoBarthird = document.createElement('div');
     todoBarthird.classList.add('card-body');
 
 
-    const todoBarfour = document.createElement('div');
+    const todoBarfour = document.createElement('p');
     todoBarfour.classList.add('card-text');
-    todoBarfour.innerText =Text;
+    todoBarfour.innerText =textfromarea;
 
     todo.appendChild(todoBar);
     todoBar.appendChild(todoBarsecond);
     todoBarsecond.appendChild(todoBarthird);
-    todoBarthird.appendChild(todoBarfour);
-    gripSection.append(todo);
+    todoBarthird.appendChild(todoBarfour); 
+   // todoBar.append(todoBarsecond); 
+    gripSection.append(todo); // dzieki 
 
 
   }
