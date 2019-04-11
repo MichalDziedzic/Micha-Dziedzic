@@ -1,13 +1,39 @@
 
 document.addEventListener("DOMContentLoaded", function () {
+  
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCnumV6OP7OMTYBUzrDoX_UjNv8Fcxs7_o",
+    authDomain: "todo-misza.firebaseapp.com",
+    databaseURL: "https://todo-misza.firebaseio.com",
+    projectId: "todo-misza",
+    storageBucket: "todo-misza.appspot.com",
+    messagingSenderId: "342906753616"
+  };
 
+  firebase.initializeApp(config);
+
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      if(window.location.href!=="file:///D:/Users/michal.dziedzic/Desktop/Micha-Dziedzic/index.html")
+      //window.location="file:///D:/Users/michal.dziedzic/Desktop/Micha-Dziedzic/index.html";
+    } else {
+      if(window.location.href!=="../Sign_in.html")
+      //file:///D:/Users/michal.dziedzic/Desktop/Micha-Dziedzic/index.html
+      //window.location.href="Sign_in.html";
+    }
+  });
+  
   const addTaskButton = document.querySelector('#addTaskButton');
   const gripSection = document.querySelector('.section');
   const modal=document.querySelector('.modal-block');
   const cancel=document.querySelector('.cancel-x');
   const openModal=document.querySelector('#openModal');
   const todoForm=document.querySelector('.todoForm');
+  const signIn=document.querySelector('.sign-in');
 
+  signIn.addEventListener('click',firebaseLogin);
   openModal.addEventListener('click', openmodal);
   cancel.addEventListener('click',closemodal);
   addTaskButton.addEventListener('click',closemodal);
@@ -63,9 +89,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const todoBarsecond = document.createElement('div');
     //todoBarsecond.innerHTML=name + "</div>";
+    
     //todoBarsecond.classList.add('card-header header-card');
     addClassToElem(todoBarsecond, ['card-header', 'header-card']);
-    
+    todoBarsecond.innerText=name;
     
 
     const todoBarthird = document.createElement('div');
@@ -78,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     todo.appendChild(todoBar);
     todoBar.appendChild(todoBarsecond);
-    todoBarsecond.appendChild(todoBarthird);
+    todoBar.appendChild(todoBarthird);
     todoBarthird.appendChild(todoBarfour); 
    // todoBar.append(todoBarsecond); 
     gripSection.append(todo); // dzieki 
@@ -86,7 +113,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   }
 
+  
 
+  function firebaseLogin(){
+    const email=document.querySelector('#login').value;
+    const password=document.querySelector('#password').value;
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+    });
+
+
+
+
+  }
 
 
 
