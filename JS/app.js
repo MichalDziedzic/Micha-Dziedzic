@@ -1,5 +1,12 @@
 
 document.addEventListener("DOMContentLoaded", function () {
+  
+  
+
+
+
+
+  
 
   const addTaskButton = document.querySelector('#addTaskButton');
   const gripSection = document.querySelector('.section');
@@ -7,7 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const cancel=document.querySelector('.cancel-x');
   const openModal=document.querySelector('#openModal');
   const todoForm=document.querySelector('.todoForm');
+  
 
+  
   openModal.addEventListener('click', openmodal);
   cancel.addEventListener('click',closemodal);
   addTaskButton.addEventListener('click',closemodal);
@@ -24,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
       }
   });
-
+ 
  
 
   function addClassToElem(elem, array) {
@@ -63,9 +72,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const todoBarsecond = document.createElement('div');
     //todoBarsecond.innerHTML=name + "</div>";
+    
     //todoBarsecond.classList.add('card-header header-card');
     addClassToElem(todoBarsecond, ['card-header', 'header-card']);
-    
+    todoBarsecond.innerText=name;
     
 
     const todoBarthird = document.createElement('div');
@@ -78,13 +88,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     todo.appendChild(todoBar);
     todoBar.appendChild(todoBarsecond);
-    todoBarsecond.appendChild(todoBarthird);
+    todoBar.appendChild(todoBarthird);
     todoBarthird.appendChild(todoBarfour); 
    // todoBar.append(todoBarsecond); 
     gripSection.append(todo); // dzieki 
 
 
   }
+
+  
 
 
 
