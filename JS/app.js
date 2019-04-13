@@ -1,6 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
   
+<<<<<<< HEAD
   
 
 
@@ -8,15 +9,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
   
 
+=======
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCnumV6OP7OMTYBUzrDoX_UjNv8Fcxs7_o",
+    authDomain: "todo-misza.firebaseapp.com",
+    databaseURL: "https://todo-misza.firebaseio.com",
+    projectId: "todo-misza",
+    storageBucket: "todo-misza.appspot.com",
+    messagingSenderId: "342906753616"
+  };
+
+  firebase.initializeApp(config);
+
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      if(window.location.href!=="file:///D:/Users/michal.dziedzic/Desktop/Micha-Dziedzic/index.html")
+      //window.location="file:///D:/Users/michal.dziedzic/Desktop/Micha-Dziedzic/index.html";
+    } else {
+      if(window.location.href!=="../Sign_in.html")
+      //file:///D:/Users/michal.dziedzic/Desktop/Micha-Dziedzic/index.html
+      //window.location.href="Sign_in.html";
+    }
+  });
+  
+>>>>>>> b6f52e076e3a97f5bd3a1f4982990122953c28de
   const addTaskButton = document.querySelector('#addTaskButton');
   const gripSection = document.querySelector('.section');
   const modal=document.querySelector('.modal-block');
   const cancel=document.querySelector('.cancel-x');
   const openModal=document.querySelector('#openModal');
   const todoForm=document.querySelector('.todoForm');
+<<<<<<< HEAD
   
 
   
+=======
+  const signIn=document.querySelector('.sign-in');
+
+  signIn.addEventListener('click',firebaseLogin);
+>>>>>>> b6f52e076e3a97f5bd3a1f4982990122953c28de
   openModal.addEventListener('click', openmodal);
   cancel.addEventListener('click',closemodal);
   addTaskButton.addEventListener('click',closemodal);
@@ -97,8 +130,25 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   
+<<<<<<< HEAD
+
+=======
+>>>>>>> b6f52e076e3a97f5bd3a1f4982990122953c28de
+
+  function firebaseLogin(){
+    const email=document.querySelector('#login').value;
+    const password=document.querySelector('#password').value;
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ...
+    });
 
 
+
+
+  }
 
 
 
