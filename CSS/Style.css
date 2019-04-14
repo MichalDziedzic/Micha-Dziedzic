@@ -1,12 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 body{
     background-color:#eee;
     overflow-x:hidden;
+    font-family: 'Lato', sans-serif;
 }
-.wrapper{
-    margin:80px;
+#wrapper-signin{
+
+    height: 100vh;
+    background-color:#3AAFA9;
+    
 }
+.inner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hidden {
+    display: none;
+    
+  }
+
 .personal{
-    background-color: blueviolet;
+    background-color:#3AAFA9;
 
 }
 .user{
@@ -27,21 +44,30 @@ body{
     padding: 20px 25px;
     margin-bottom: 20px;
     margin-right: 20px;
+    background-color: #3AAFA9;
+    color: #feffff;
 }
 .fas{
     font-size: 3.5em;
 }
-.form-signin{
-    max-width:380px;
-    margin:0 auto;
-    background-color: #fff;
-    padding: 15px 40px 50px;
-    border:1px solid #e5e5e5;
-    border-radius:10px;
+.sign-in{
+    background-color: #feffff;
+    color: #17252A;
+    border:1px solid #17252A;
 }
-.personal{
-    background-color: blueviolet;
 
+
+.form-signin{
+    width:380px;
+    margin:0 auto;
+    padding-top: 200px;
+    background-color: #DEF2F1;
+    padding: 15px 40px 50px;
+    border:1px solid #17252A;
+    -webkit-box-shadow: -1px 0px 56px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 0px 56px -12px rgba(0,0,0,0.75);
+    box-shadow: -1px 0px 56px -12px rgba(0,0,0,0.75);
+    border-radius:10px;
 }
 .form-signin .form-signin-heading, .form-signin .checkbox{
   margin-bottom: 30px;  
