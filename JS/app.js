@@ -13,11 +13,35 @@ var config = {
  const username ='';
 firebase.initializeApp(config);
 
+//  firebase databse realtime
+
+//var database = firebase.database();
+
+//create reference
+
+//const dbReferobj=firebase.database().ref().child('object');
+//const dbReflist=dbReferobj.child('hobi');
+
+function sentlueusserdata(loggin,pass){
+
+  
+
+
+
+
+}
+
 firebase.auth().onAuthStateChanged(function (user) {
   if (user){
         console.log("signed in!");
         switchToAppPage();
         addUserDescribe(user);
+        console.log(user.uid);
+        console.log(typeof(user.uid));
+        console.log(user);
+
+
+
         // todo get user data
         
       
@@ -87,13 +111,16 @@ function switchToAppPage() {
 // sign in user
 function signIn(email,password){
 firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
-  console.log(password);
-  console.log(email);
+  
   var errorCode = error.code;
   var errorMessage = error.message;
   alert(errorMessage);
   // ...
 });
+
+    //sentlueusserdata(email,password);
+
+  
 }
 
 //logout user
@@ -116,8 +143,30 @@ function signoutUserserw(){
 }
 
 // create user 
+  const aSignUp=document.querySelector('.asign_up');
+  //const formSigin=document.querySelector('.form-signin');
+  aSignUp.addEventListener('click',asignupopen);
 
 
+  function asignupopen() {
+    
+    const formSigin=document.querySelector('.sign_incontainer');
+    const registerdiv=document.querySelector('.register');
+    formSigin.classList.add("hidden");
+    registerdiv.classList.remove('hidden');
+
+
+  }
+  
+  
+function createaccound(){
+
+
+
+
+
+
+}
 
 
 

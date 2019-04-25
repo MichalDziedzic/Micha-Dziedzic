@@ -16,12 +16,20 @@ body{
     align-items: center;
     justify-content: center;
 }
-
+.aelem{
+    padding: 0 0 15px 0;
+}
 .hidden {
     display: none;
     
   }
+  #hidden{
+    display: none;
+  }
+#backelem{
 
+    font-size: 20px;
+}
 .personal{
     background-color:#3AAFA9;
 
