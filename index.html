@@ -44,7 +44,7 @@
 
                 <div class="d-flex justify-content-end">
                     <a class="link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">xdddd</a>
+                        aria-haspopup="true" aria-expanded="false"></a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="#">account</a>
                         <a class="dropdown-item" id="logout">log out</a>
@@ -57,63 +57,34 @@
 
         <!--  section-->
 
-        <div class="section">
+        <div class="sectionAll">
+            <div class="card-area">
+                <div class="row  section d-flex justify-content-center">
 
-            <div class=" row  section d-flex justify-content-center ">
 
-
-                <div class="   col-6 row   section-cards section-card text-white bg-info mb-3">
-                    <div class="card-header header-card">Header</div>
+                <div class="row col-12 col-sm-12 col-md-6 col-lg-6 section-cards section-card text-white bg-info mb-3">
+                    <div class="card-header header-card d-flex justify-content-between">
+                        <span>Header</span>
+                        <div class="buttons">
+                                <button type="button" class="btn btn-info edit"><i class="far fa-edit"></i></button>
+                        <button type="button" class="btn btn-info cancel-btn"><i class="far fa-times-circle"></i></button>
+                      </div>
+                    </div> 
                     <div class="card-body">
-
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of
                             the card's content.</p>
                     </div>
+                    <div class="card-header date-deadline">12:03</div>
+                
                 </div>
-            </div>
-
-            <div class=" row  section-cards d-flex justify-content-center">
-                <div class=" text-white bg-primary mb-3  col-6 row  section-card">
-                    <div class="card-header header-card">Header</div>
-                    <div class="card-body">
-
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                    </div>
-                </div>
-            </div>
-            <div class=" row  section-cards d-flex justify-content-center ">
-                <div class=" text-white bg-primary mb-3  col-6 row  section-card">
-                    <div class="card-header header-card">Header</div>
-                    <div class="card-body">
-
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                    </div>
-                </div>
-            </div>
-            <div class=" row  section-cards d-flex justify-content-center ">
-                <div class=" text-white bg-primary mb-3  col-6 row  section-card">
-                    <div class="card-header header-card">Header</div>
-                    <div class="card-body">
-
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                    </div>
-                </div>
-            </div>
-            <div class=" row  section-cards d-flex justify-content-center ">
-                <div class=" text-white bg-primary mb-3  col-6 row  section-card">
-                    <div class="card-header header-card">Header</div>
-                    <div class="card-body">
-
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                    </div>
-                </div>
+            
             </div>
 
         </div>
+       
+        </div>
+
+        
 
 
 
@@ -144,8 +115,8 @@
 
                                 <label><textarea class="form-control" id="Textarea" rows="3"></textarea></label>
 
-                                <label><input type="date" id="start" name="trip-start" class="form-control" value="2020-12-12"></label>
-                                <label></label><input type="time" name="time" id="deadline" class="form-control" value="00:00"></label>
+                                <label><input type="date" id="deadlinedate" name="trip-start" class="form-control" value="2020-12-12"></label>
+                                <label><input type="time" name="time" id="deadlinetime" class="form-control" value="00:00"></label>
 
                                 <div class="row d-flex justify-content-center">
                                     <button type="submit" class="btn btn-primary" style="margin-top:30px" id="addTaskButton">Add</button>
@@ -160,7 +131,7 @@
     </div>
 </body>
 <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
-<script src="JS/auth.js"></script>
+
 <script src="JS/app.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
