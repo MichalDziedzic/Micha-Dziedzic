@@ -22,25 +22,32 @@ firebase.initializeApp(config);
 //const dbReferobj=firebase.database().ref().child('object');
 //const dbReflist=dbReferobj.child('hobi');
 
-function sentlueusserdata(loggin,pass){
-
-  
 
 
 
 
-}
 
+
+
+
+
+
+
+
+
+const signupform=document.querySelector('.signupForm');
 firebase.auth().onAuthStateChanged(function (user) {
   if (user){
         console.log("signed in!");
         switchToAppPage();
         addUserDescribe(user);
-        console.log(user.uid);
-        console.log(typeof(user.uid));
-        console.log(user);
+        uid = user.uid;
+        
+      //  console.log(typeof(user.uid));
+       // console.log(user);
+       //create reference
 
-
+    
 
         // todo get user data
         
@@ -51,7 +58,119 @@ firebase.auth().onAuthStateChanged(function (user) {
     // No user is signed in.
   
   }
+
+
+  
+
 });
+//create new user
+
+
+/*
+  
+signupform.addEventListener('submit',function(e){
+
+  e.preventDefault();
+  let newloginemail=this.querySelector('#login_signup').value;
+  let newuserpasswd=this.querySelector('#password_signup').value;
+  let nameuser=this.querySelector('#name_signup').value;
+  let surnameuser=this.querySelector('#surname_signup').value;
+
+
+
+  createaccound(newloginemail,newuserpasswd);
+  signupform.reset();
+
+});
+*/
+
+function checkuser(userobj){
+
+        
+       // console.log(user.uid);
+      //  console.log(typeof(user.uid));
+       // console.log(user);
+       //create reference
+         // const fuserid=user.uid;
+         // const umail=user.email;
+         firebase.auth().onAuthStateChanged(function (user) {
+          if (user){
+                console.log("wchodzi do psrawdzania");
+                
+                
+                let uiduser=user.uid;
+          firebase.database().ref("/"+uiduser).set(userobj);
+                
+             
+                
+              
+          }
+           else{
+        
+            // No user is signed in.
+          
+          }
+        
+        
+          
+        
+        });
+        /*  const july={
+            id:"pieknie",
+            meil:'xdds@op.pl'
+          }
+          const ident=54556343;
+          var uid = firebase.auth().currentUser.uid;
+          firebase.database().ref(uid + "/" +"heh").set('id:kala');   
+          }
+          //const db=firebase.database().ref("/"+ident);
+         // db.set(july)
+          //console.log(fuserid);
+    
+
+        // todo get user data
+        */
+      
+
+        }
+
+
+  
+
+
+
+
+
+
+signupform.addEventListener('submit',function(e){
+  
+
+  e.preventDefault();
+
+  //const course=new Object();
+  const course1={
+   newloginemail:this.querySelector('#login_signup').value,
+   newuserpasswd:this.querySelector('#password_signup').value,
+   nameuser:this.querySelector('#name_signup').value,
+   surnameuser:this.querySelector('#surname_signup').value,
+   Tasknum:0
+  }
+ // console.log(course1);
+  //console.log(course1['newloginemail']);
+  createaccound(course1);
+  signupform.reset();
+   
+
+});
+
+
+
+
+
+
+
+
+
 
   const addTaskButton = document.querySelector('#addTaskButton');
   const gripSection = document.querySelector('.sectionAll');
@@ -61,6 +180,7 @@ firebase.auth().onAuthStateChanged(function (user) {
   const todoForm = document.querySelector('.todoForm');
   const signInn = document.querySelector('.sign-in');
   const logout = document.querySelector('#logout');
+  
   const cancelBtn=document.querySelector('.cancel-btn');
  
   
@@ -106,6 +226,7 @@ function switchToAppPage() {
   WrapContent.classList.remove("hidden");
   wrapSignIn.classList.remove('inner');
   wrapSignIn.classList.add("hidden");
+  
 }
 
 // sign in user
@@ -142,27 +263,46 @@ function signoutUserserw(){
 
 }
 
-// create user 
+
   const aSignUp=document.querySelector('.asign_up');
   //const formSigin=document.querySelector('.form-signin');
   aSignUp.addEventListener('click',asignupopen);
+  const formSigin=document.querySelector('.sign_incontainer');
+    const registerdiv=document.querySelector('.register');
+    const backbtn=document.querySelector('.backdiv');
+    backbtn.addEventListener('click',backtosigninpage);
 
 
   function asignupopen() {
     
-    const formSigin=document.querySelector('.sign_incontainer');
-    const registerdiv=document.querySelector('.register');
+  
     formSigin.classList.add("hidden");
     registerdiv.classList.remove('hidden');
 
 
   }
   
+    
+  function backtosigninpage(){
+         
+          formSigin.classList.remove("hidden");
+          registerdiv.classList.add('hidden');
+
+  }
   
-function createaccound(){
+function createaccound(userobj){
 
+  
 
+  firebase.auth().createUserWithEmailAndPassword(userobj['newloginemail'],userobj['newuserpasswd']).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
+  });
 
+ 
+  checkuser(userobj);
 
 
 
@@ -196,6 +336,7 @@ function addUserDescribe(username){
   }
 
 */
+  let count=0;
 
   todoForm.addEventListener('submit', function (e) {
 
@@ -205,38 +346,69 @@ function addUserDescribe(username){
     const TaskName = this.querySelector('#NameTask');
     var deadDate= document.querySelector('#deadlinedate');
     var deadTime=document.querySelector('#deadlinetime');
+
     
-   
+    
+    
     if (Textarea.value !== '' && TaskName.value !== '') {
 
+      const tasknew={
+        taskName:this.querySelector('#NameTask').value,
+        taskarea:this.querySelector('Textarea').value
+        //nameuser:this.querySelector('#name_signup').value,
+        //surnameuser:this.querySelector('#surname_signup').value,
      
+       }
+
+            
             AddTask(TaskName.value, Textarea.value , deadDate.value ,deadTime.valueAsDate);
+
+            var uid = firebase.auth().currentUser.uid;
+            firebase.database().ref(uid +"/Tasknum").on("value", function(snapshot) {
+            var Tasknumber = snapshot.val();
+            console.log(Tasknumber);
+            
+            //firebase.database().ref(uid+"/Tasknum").update(counter(Tasknumber));
+            
+            
+            
+            //firebase.database().ref("/"+uid+"/"+"Tasks"+"/"+counter()).set(tasknew);   
           
             console.log('przeszlo');
             
+          
             
            
             
            // console.log(inputTime+":"+(inputTime.getHours()-1));
 
 
+            
+
+            });
             Textarea.value = '';
             TaskName.value = '';
             deadDate.value='';
-
-
-           
+            //firebase.database().ref("/"+uid+"/Tasknum").set(counter(Tasknum));
+          }
       
     
-    }
+    
   });
 
 //function timeprint(dateform,timeform){
 
-  
+  function counter(next){
+              
+    next=next+1;
+
+    
+    return next;
 
 
-//}
+
+
+}
 
   function addClassToElem(elem, array){
 
@@ -254,6 +426,7 @@ function addUserDescribe(username){
 
 
     modal.style.setProperty('display', 'block');
+    
 
 
   }
