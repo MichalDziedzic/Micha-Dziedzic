@@ -1,26 +1,19 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  // Initialize Firebase
-var config = {
-  apiKey: "AIzaSyCnumV6OP7OMTYBUzrDoX_UjNv8Fcxs7_o",
-  authDomain: "todo-misza.firebaseapp.com",
-  databaseURL: "https://todo-misza.firebaseio.com",
-  projectId: "todo-misza",
-  storageBucket: "todo-misza.appspot.com",
-  messagingSenderId: "342906753616"
-};
- const username ='';
-firebase.initializeApp(config);
+//   // Initialize Firebase
+// var config = {
+//   apiKey: "AIzaSyCnumV6OP7OMTYBUzrDoX_UjNv8Fcxs7_o",
+//   authDomain: "todo-misza.firebaseapp.com",
+//   databaseURL: "https://todo-misza.firebaseio.com",
+//   projectId: "todo-misza",
+//   storageBucket: "todo-misza.appspot.com",
+//   messagingSenderId: "342906753616"
+// };
+//  const username ='';
+// firebase.initializeApp(config);
 
-//  firebase databse realtime
 
-//var database = firebase.database();
-
-//create reference
-
-//const dbReferobj=firebase.database().ref().child('object');
-//const dbReflist=dbReferobj.child('hobi');
 
 
 
@@ -36,6 +29,7 @@ firebase.initializeApp(config);
 
 
 const signupform=document.querySelector('.signupForm');
+
 firebase.auth().onAuthStateChanged(function (user) {
   if (user){
         console.log("signed in!");
@@ -218,6 +212,11 @@ function switchToLoginPage() {
   WrapContent.classList.add("hidden");
   wrapSignIn.classList.add('inner');
   wrapSignIn.classList.remove("hidden");
+
+
+  
+
+
 }
 
 function switchToAppPage() {
@@ -237,11 +236,7 @@ firebase.auth().signInWithEmailAndPassword(email, password).catch(function (erro
   var errorMessage = error.message;
   alert(errorMessage);
   // ...
-});
-
-    //sentlueusserdata(email,password);
-
-  
+})
 }
 
 //logout user
